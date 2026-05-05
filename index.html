@@ -10,25 +10,47 @@ body{font-family:'Times New Roman',serif;background:#e8e8e8;display:flex;flex-di
 .corner.tl{top:8px;left:8px}.corner.tr{top:8px;right:8px}.corner.bl{bottom:8px;left:8px}.corner.br{bottom:8px;right:8px}
 h1{font-size:22px;font-weight:700;text-align:center;letter-spacing:1px;margin-bottom:4px}
 .subtitle{text-align:center;font-size:14px;color:#666;margin-bottom:20px}
-.field{display:flex;flex-direction:column;gap:5px;margin-bottom:20px}
+.section-title{font-size:16px;font-weight:700;margin:16px 0 9px;border-left:4px solid #c00;padding-left:10px}
+.field{display:flex;flex-direction:column;gap:5px;margin-bottom:16px}
 .field label{font-size:14px;font-weight:700;color:#555}
 .field input{font-size:16px;font-family:inherit;padding:7px 11px;border:1px solid #bbb;border-radius:6px;outline:none;max-width:400px}
 .field input:focus{border-color:#c00}
-.section-title{font-size:16px;font-weight:700;margin:16px 0 9px;border-left:4px solid #c00;padding-left:10px}
 
-.q-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:4px 12px;border:1px solid #ccc;border-radius:8px;padding:14px}
+/* CHỌN MÔN */
+#subject-screen{display:flex;flex-direction:column;align-items:center;padding:24px}
+#subject-screen .paper{max-width:600px}
+.subject-title{font-size:22px;font-weight:700;text-align:center;margin-bottom:6px}
+.subject-sub{text-align:center;font-size:14px;color:#666;margin-bottom:24px}
+.subject-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:24px}
+.subject-card{border:2px solid #ddd;border-radius:10px;padding:16px 14px;cursor:pointer;transition:border-color .15s,background .15s;user-select:none}
+.subject-card:hover{border-color:#c00;background:#fff5f5}
+.subject-card.active{border-color:#c00;background:#fff0f0}
+.subject-card .sc-name{font-size:17px;font-weight:700;margin-bottom:6px}
+.subject-card .sc-info{font-size:12px;color:#666;line-height:1.7}
+.subject-card .sc-badge{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:4px;margin-top:6px;background:#f5e6e6;color:#c00}
+.subject-custom{border:2px dashed #bbb;border-radius:10px;padding:14px;cursor:pointer;transition:border-color .15s;user-select:none;text-align:center}
+.subject-custom:hover{border-color:#c00}
+.subject-custom.active{border-color:#c00;background:#fff0f0}
+.subject-custom .sc-name{font-size:16px;font-weight:700;margin-bottom:4px}
+.subject-custom .sc-info{font-size:12px;color:#888}
+.start-btn{display:block;width:100%;padding:13px;font-family:inherit;font-size:17px;font-weight:700;background:#c00;color:#fff;border:none;border-radius:8px;cursor:pointer;transition:opacity .2s}
+.start-btn:hover{opacity:.87}
+.start-btn:disabled{opacity:.4;cursor:default}
+
+/* PHIẾU */
+#exam{display:none}
+.q-grid{display:grid;gap:4px 12px;border:1px solid #ccc;border-radius:8px;padding:14px}
 .q-col{display:flex;flex-direction:column;gap:4px}
-.col-hdr{display:flex;align-items:center;gap:4px;font-size:13px;font-weight:700;color:#888;padding-left:30px;margin-bottom:4px}
+.col-hdr{display:flex;align-items:center;gap:4px;font-size:13px;font-weight:700;color:#888;margin-bottom:4px}
 .col-hdr span{width:22px;text-align:center}
 .q-row{display:flex;align-items:center;gap:5px}
 .q-num{font-size:14px;font-weight:700;width:26px;text-align:right}
-.q-row.hl .q-num{color:#c00}
 .bubble{width:22px;height:22px;border:1.5px solid #aaa;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .1s;flex-shrink:0}
 .bubble:hover{background:#f0f0f0;border-color:#555}
 .bubble.sel{background:#111;border-color:#111}
 .bubble.sel::after{content:'';width:8px;height:8px;background:#fff;border-radius:50%;display:block}
 
-.p2-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;border:1px solid #ccc;border-radius:8px;padding:14px}
+.p2-grid{display:grid;gap:8px;border:1px solid #ccc;border-radius:8px;padding:14px}
 .p2-block{border:1px solid #ddd;border-radius:6px;padding:8px}
 .p2-title{font-size:14px;font-weight:700;text-align:center;margin-bottom:6px}
 .p2-header{display:flex;gap:4px;font-size:12px;font-weight:700;color:#888;margin-bottom:4px;padding-left:22px}
@@ -43,7 +65,7 @@ h1{font-size:22px;font-weight:700;text-align:center;letter-spacing:1px;margin-bo
 .p3-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;border:1px solid #ccc;border-radius:8px;padding:14px}
 .p3-block{border:1px solid #ddd;border-radius:6px;padding:10px}
 .p3-title{font-size:14px;font-weight:700;text-align:center;margin-bottom:8px}
-.p3-input{width:100%;font-size:18px;font-family:inherit;text-align:center;border:none;border-bottom:2px solid #c00;outline:none;padding:4px;background:transparent;color:#111}
+.p3-inp{width:100%;font-size:18px;font-family:inherit;text-align:center;border:none;border-bottom:2px solid #c00;outline:none;padding:4px;background:transparent;color:#111}
 
 .btn-bar{display:flex;gap:12px;justify-content:center;margin-top:22px}
 .btn{padding:11px 34px;font-family:inherit;font-size:16px;font-weight:700;border:none;border-radius:6px;cursor:pointer;transition:opacity .2s,transform .1s}
@@ -53,12 +75,11 @@ h1{font-size:22px;font-weight:700;text-align:center;letter-spacing:1px;margin-bo
 
 /* GRADE */
 #grade{display:none}
-.g-info{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:20px}
+.g-info{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px}
 .g-card{background:#f5f5f5;border-radius:6px;padding:10px 14px}
 .g-card .lbl{font-size:13px;color:#888;margin-bottom:3px}
 .g-card .val{font-size:16px;font-weight:700}
 
-/* Số câu config */
 .config-box{border:1px solid #ddd;border-radius:8px;padding:16px;margin-bottom:18px;background:#fafafa}
 .config-box h3{font-size:15px;font-weight:700;margin-bottom:12px;color:#333}
 .config-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:12px}
@@ -68,7 +89,6 @@ h1{font-size:22px;font-weight:700;text-align:center;letter-spacing:1px;margin-bo
 .cfg-item input[type=number]:focus{border-color:#c00}
 .cfg-note{font-size:12px;color:#999}
 
-/* Cấu trúc điểm */
 .score-struct-box{border:1px solid #ddd;border-radius:8px;padding:16px;margin-bottom:18px;background:#fafafa}
 .score-struct-box h3{font-size:15px;font-weight:700;margin-bottom:14px;color:#333}
 .struct-options{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px}
@@ -76,9 +96,7 @@ h1{font-size:22px;font-weight:700;text-align:center;letter-spacing:1px;margin-bo
 .struct-opt:hover{border-color:#c00;background:#fff5f5}
 .struct-opt.active{border-color:#c00;background:#fff0f0}
 .struct-opt .opt-title{font-size:14px;font-weight:700;margin-bottom:6px}
-.struct-opt .opt-desc{font-size:12px;color:#666;line-height:1.5}
-
-/* Điểm linh hoạt */
+.struct-opt .opt-desc{font-size:12px;color:#666;line-height:1.6}
 .flex-grid{display:none;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:4px}
 .flex-grid.show{display:grid}
 .flex-item{display:flex;flex-direction:column;gap:5px}
@@ -86,13 +104,15 @@ h1{font-size:22px;font-weight:700;text-align:center;letter-spacing:1px;margin-bo
 .flex-item input{font-size:15px;font-family:inherit;padding:6px 10px;border:1px solid #bbb;border-radius:6px;outline:none;text-align:center}
 .flex-item input:focus{border-color:#c00}
 .flex-note{font-size:11px;color:#999}
+.apply-btn{padding:8px 22px;font-family:inherit;font-size:14px;font-weight:700;background:#555;color:#fff;border:none;border-radius:6px;cursor:pointer}
+.apply-btn:hover{background:#333}
 
 .key-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:7px}
 .key-item{display:flex;align-items:center;gap:6px;font-size:15px}
 .key-item label{font-weight:700;width:38px}
 .key-item select{flex:1;font-size:15px;font-family:inherit;padding:4px;border:1px solid #bbb;border-radius:6px;outline:none;cursor:pointer}
 .key-item select:focus{border-color:#c00}
-.p2-key-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.p2-key-grid{display:grid;gap:8px}
 .p2-key-block{border:1px solid #ddd;border-radius:6px;padding:8px}
 .p2-key-title{font-size:14px;font-weight:700;text-align:center;margin-bottom:6px}
 .p2-key-row{display:flex;align-items:center;gap:6px;margin-bottom:4px;font-size:14px}
@@ -101,15 +121,12 @@ h1{font-size:22px;font-weight:700;text-align:center;letter-spacing:1px;margin-bo
 .p3-key-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .p3-key-block{border:1px solid #ddd;border-radius:6px;padding:10px}
 .p3-key-title{font-size:14px;font-weight:700;text-align:center;margin-bottom:6px}
-.p3-key-input{width:100%;font-size:16px;font-family:inherit;text-align:center;border:none;border-bottom:2px solid #c00;outline:none;padding:3px;background:transparent}
-
-.apply-btn{padding:8px 22px;font-family:inherit;font-size:14px;font-weight:700;background:#555;color:#fff;border:none;border-radius:6px;cursor:pointer}
-.apply-btn:hover{background:#333}
+.p3-key-inp{width:100%;font-size:16px;font-family:inherit;text-align:center;border:none;border-bottom:2px solid #c00;outline:none;padding:3px;background:transparent}
 
 .score-box{text-align:center;border:2px solid #c00;border-radius:10px;padding:22px;margin:18px 0}
 .score-num{font-size:60px;font-weight:700;color:#c00;line-height:1}
 .score-lbl{font-size:15px;color:#666;margin-top:8px}
-.score-detail{font-size:14px;color:#888;margin-top:10px;line-height:2}
+.score-detail{font-size:14px;color:#888;margin-top:10px;line-height:2;white-space:pre-line}
 .mark-btn{display:block;margin:0 auto;padding:11px 48px;background:#c00;color:#fff;font-family:inherit;font-size:16px;font-weight:700;border:none;border-radius:6px;cursor:pointer}
 .mark-btn:hover{background:#a00}
 .res-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:5px;margin-top:10px}
@@ -117,75 +134,103 @@ h1{font-size:22px;font-weight:700;text-align:center;letter-spacing:1px;margin-bo
 .res-item .rn{font-weight:700;width:32px}
 .res-item .rm{font-size:15px}
 .ok{background:#d4edda}.wrong{background:#f8d7da}.blank{background:#fff3cd}
+.hidden{display:none!important}
 </style>
-  <title>PHIẾU TRẮC NGHIỆM 1.0.0</title>
 </head>
+  <title>PHIẾU TRẮC NGHIỆM 1.0.1</title>
 <body>
 
-<!-- ===== EXAM ===== -->
+<!-- ===== CHỌN MÔN ===== -->
+<div id="subject-screen">
+<div class="paper">
+  <div class="corner tl"></div><div class="corner tr"></div>
+  <div class="corner bl"></div><div class="corner br"></div>
+  <div class="subject-title">PHIẾU TRẢ LỜI TRẮC NGHIỆM</div>
+  <div class="subject-sub">Chọn môn học để bắt đầu</div>
+
+  <div class="field">
+    <label>Họ và tên thí sinh</label>
+    <input type="text" id="hoten-sub" placeholder="Nguyễn Văn A">
+  </div>
+
+  <div class="subject-grid" id="subject-grid"></div>
+
+  <div class="subject-custom" id="opt-custom" onclick="selectSubject('custom')">
+    <div class="sc-name">Tuỳ chỉnh</div>
+    <div class="sc-info">Tự chọn số câu và cách tính điểm khi chấm bài</div>
+  </div>
+
+  <br>
+  <button class="start-btn" id="start-btn" onclick="startExam()" disabled>Bắt đầu làm bài →</button>
+</div>
+</div>
+
+<!-- ===== PHIẾU ===== -->
 <div id="exam">
 <div class="paper">
   <div class="corner tl"></div><div class="corner tr"></div>
   <div class="corner bl"></div><div class="corner br"></div>
   <h1>PHIẾU TRẢ LỜI TRẮC NGHIỆM</h1>
-  <div class="subtitle">Thí sinh đọc kỹ hướng dẫn trước khi làm bài</div>
-  <div class="field">
-    <label>Họ và tên thí sinh</label>
-    <input type="text" id="hoten" placeholder="Nguyễn Văn A">
+  <div class="subtitle" id="exam-subtitle"></div>
+
+  <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:18px">
+    <div style="font-size:16px;font-weight:700;color:#555">Thí sinh: <span id="exam-name" style="color:#111"></span></div>
+    <div style="font-size:14px;color:#888" id="exam-mon"></div>
   </div>
-  <div class="section-title">PHẦN I — Trắc nghiệm nhiều lựa chọn (A / B / C / D)</div>
-  <div class="q-grid" id="p1grid"></div>
-  <div class="section-title">PHẦN II — Đúng / Sai</div>
-  <div class="p2-grid" id="p2grid"></div>
-  <div class="section-title">PHẦN III — Trả lời ngắn</div>
-  <div class="p3-grid" id="p3grid"></div>
+
+  <div id="p1-section">
+    <div class="section-title" id="p1-title">PHẦN I — Trắc nghiệm (A / B / C / D)</div>
+    <div class="q-grid" id="p1grid"></div>
+  </div>
+
+  <div id="p2-section">
+    <div class="section-title">PHẦN II — Đúng / Sai</div>
+    <div class="p2-grid" id="p2grid"></div>
+  </div>
+
+  <div id="p3-section">
+    <div class="section-title">PHẦN III — Trả lời ngắn</div>
+    <div class="p3-grid" id="p3grid"></div>
+  </div>
 </div>
 <div class="btn-bar">
-  <button class="btn btn-secondary" onclick="if(confirm('Làm lại từ đầu?'))location.reload()">Làm lại</button>
+  <button class="btn btn-secondary" onclick="goSubject()">← Đổi môn</button>
+  <button class="btn btn-secondary" onclick="if(confirm('Làm lại từ đầu?'))resetExam()">Làm lại</button>
   <button class="btn btn-primary" onclick="goGrade()">Hoàn thành → Chấm bài</button>
 </div>
 </div>
 
-<!-- ===== GRADE ===== -->
+<!-- ===== CHẤM BÀI ===== -->
 <div id="grade">
 <div class="paper">
   <div class="corner tl"></div><div class="corner tr"></div>
   <div class="corner bl"></div><div class="corner br"></div>
   <h1>CHẤM BÀI TRẮC NGHIỆM</h1>
-  <div class="subtitle">Chọn cấu trúc điểm, tuỳ chỉnh số câu, nhập đáp án rồi chấm</div>
+  <div class="subtitle" id="grade-subtitle"></div>
 
   <div class="g-info">
     <div class="g-card"><div class="lbl">Thí sinh</div><div class="val" id="g-ten">—</div></div>
-    <div class="g-card"><div class="lbl">Câu đã tô (Phần I)</div><div class="val" id="g-done">—</div></div>
+    <div class="g-card"><div class="lbl">Môn học</div><div class="val" id="g-mon">—</div></div>
+    <div class="g-card"><div class="lbl">Câu đã tô (P.I)</div><div class="val" id="g-done">—</div></div>
   </div>
 
   <!-- CẤU TRÚC ĐIỂM -->
   <div class="score-struct-box">
     <h3>Cấu trúc điểm</h3>
     <div class="struct-options">
-      <div class="struct-opt active" id="opt-chuan" onclick="setStruct('chuan')">
+      <div class="struct-opt" id="opt-chuan" onclick="setStruct('chuan')">
         <div class="opt-title">Chuẩn</div>
-        <div class="opt-desc">
-          Theo cấu trúc chuẩn của Bộ
-        </div>
+        <div class="opt-desc">TN: 0,25đ/câu<br>ĐS: 0→0,1→0,25→0,5→1đ<br>TLN: theo môn</div>
       </div>
       <div class="struct-opt" id="opt-phothong" onclick="setStruct('phothong')">
         <div class="opt-title">Phổ thông</div>
-        <div class="opt-desc">
-          TN: 0,25đ/câu<br>
-          ĐS: 0,25đ/ý đúng<br>
-          TLN: 0,5đ/câu
-        </div>
+        <div class="opt-desc">TN: 0,25đ/câu<br>ĐS: 0,25đ/ý đúng<br>TLN: 0,5đ/câu</div>
       </div>
       <div class="struct-opt" id="opt-linhhoat" onclick="setStruct('linhhoat')">
         <div class="opt-title">Linh hoạt</div>
-        <div class="opt-desc">
-          Tự điều chỉnh điểm<br>
-          cho từng phần
-        </div>
+        <div class="opt-desc">Tự điều chỉnh điểm cho từng phần</div>
       </div>
     </div>
-    <!-- Linh hoạt inputs -->
     <div class="flex-grid" id="flex-inputs">
       <div class="flex-item">
         <label>TN — điểm/câu</label>
@@ -210,31 +255,34 @@ h1{font-size:22px;font-weight:700;text-align:center;letter-spacing:1px;margin-bo
     <h3>Số câu chấm</h3>
     <div class="config-grid">
       <div class="cfg-item">
-        <label>Phần I — Trắc nghiệm</label>
-        <input type="number" id="cfg-p1" value="40" min="1" max="40">
-        <div class="cfg-note">Tối đa 40 câu</div>
+        <label>Phần I — TN</label>
+        <input type="number" id="cfg-p1" value="40" min="0" max="40">
+        <div class="cfg-note">Tối đa 40</div>
       </div>
       <div class="cfg-item">
-        <label>Phần II — Đúng / Sai</label>
-        <input type="number" id="cfg-p2" value="4" min="1" max="4">
-        <div class="cfg-note">Tối đa 4 câu</div>
+        <label>Phần II — ĐS</label>
+        <input type="number" id="cfg-p2" value="4" min="0" max="4">
+        <div class="cfg-note">Tối đa 4</div>
       </div>
       <div class="cfg-item">
-        <label>Phần III — Trả lời ngắn</label>
-        <input type="number" id="cfg-p3" value="6" min="1" max="6">
-        <div class="cfg-note">Tối đa 6 câu</div>
+        <label>Phần III — TLN</label>
+        <input type="number" id="cfg-p3" value="6" min="0" max="6">
+        <div class="cfg-note">Tối đa 6</div>
       </div>
     </div>
     <button class="apply-btn" onclick="applyConfig()">Áp dụng</button>
   </div>
 
-  <!-- ĐÁP ÁN -->
   <div class="section-title">Đáp án Phần I</div>
   <div class="key-grid" id="keygrid"></div>
-  <div class="section-title" style="margin-top:14px">Đáp án Phần II</div>
-  <div class="p2-key-grid" id="p2keygrid"></div>
-  <div class="section-title" style="margin-top:14px">Đáp án Phần III</div>
-  <div class="p3-key-grid" id="p3keygrid"></div>
+  <div id="p2-key-section">
+    <div class="section-title" style="margin-top:14px">Đáp án Phần II</div>
+    <div class="p2-key-grid" id="p2keygrid"></div>
+  </div>
+  <div id="p3-key-section">
+    <div class="section-title" style="margin-top:14px">Đáp án Phần III</div>
+    <div class="p3-key-grid" id="p3keygrid"></div>
+  </div>
 
   <div class="score-box">
     <div class="score-lbl">Điểm số</div>
@@ -246,38 +294,179 @@ h1{font-size:22px;font-weight:700;text-align:center;letter-spacing:1px;margin-bo
   <div id="breakdown" style="display:none;margin-top:18px">
     <div class="section-title">Chi tiết — Phần I</div>
     <div class="res-grid" id="rg1"></div>
-    <div class="section-title" style="margin-top:14px">Chi tiết — Phần II</div>
-    <div class="res-grid" id="rg2"></div>
-    <div class="section-title" style="margin-top:14px">Chi tiết — Phần III</div>
-    <div class="res-grid" id="rg3"></div>
+    <div id="rg2-wrap"><div class="section-title" style="margin-top:14px">Chi tiết — Phần II</div><div class="res-grid" id="rg2"></div></div>
+    <div id="rg3-wrap"><div class="section-title" style="margin-top:14px">Chi tiết — Phần III</div><div class="res-grid" id="rg3"></div></div>
   </div>
 </div>
 <div class="btn-bar">
-  <button class="btn btn-secondary" onclick="back()">← Quay lại bài làm</button>
+  <button class="btn btn-secondary" onclick="backToExam()">← Quay lại bài làm</button>
 </div>
 </div>
 
 <script>
-const ans1={}, ans2={}, ans3={};
-let currentStruct = 'chuan';
+/* =========== DỮ LIỆU MÔN =========== */
+const SUBJECTS = [
+  {
+    id:'toan', name:'Toán',
+    p1:12, p2:4, p3:6,
+    struct:'chuan',
+    tlnScore: 0.5,
+    info:'12 TN · 4 ĐS · 6 TLN',
+    badge:'Cấu trúc Chuẩn'
+  },
+  {
+    id:'ly', name:'Vật Lý',
+    p1:18, p2:4, p3:6,
+    struct:'chuan',
+    tlnScore: 0.25,
+    info:'18 TN · 4 ĐS · 6 TLN',
+    badge:'TLN 0,25đ/câu'
+  },
+  {
+    id:'tin', name:'Tin học',
+    p1:24, p2:4, p3:0,
+    struct:'chuan',
+    tlnScore: 0,
+    info:'24 TN · 4 ĐS · Không TLN',
+    badge:'Cấu trúc Chuẩn'
+  },
+  {
+    id:'hoa', name:'Hóa học',
+    p1:28, p2:4, p3:6,
+    struct:'chuan',
+    tlnScore: 0.5,
+    info:'28 TN · 4 ĐS · 6 TLN',
+    badge:'Cấu trúc Chuẩn'
+  },
+  {
+    id:'sinh', name:'Sinh học',
+    p1:28, p2:4, p3:6,
+    struct:'chuan',
+    tlnScore: 0.5,
+    info:'28 TN · 4 ĐS · 6 TLN',
+    badge:'Cấu trúc Chuẩn'
+  },
+  {
+    id:'su', name:'Lịch Sử',
+    p1:40, p2:4, p3:0,
+    struct:'phothong',
+    tlnScore: 0,
+    info:'40 TN · 4 ĐS · Không TLN',
+    badge:'Cấu trúc Phổ thông'
+  },
+  {
+    id:'dia', name:'Địa lý',
+    p1:40, p2:4, p3:0,
+    struct:'phothong',
+    tlnScore: 0,
+    info:'40 TN · 4 ĐS · Không TLN',
+    badge:'Cấu trúc Phổ thông'
+  },
+  {
+    id:'gdkt', name:'GDKT&PL',
+    p1:40, p2:4, p3:0,
+    struct:'phothong',
+    tlnScore: 0,
+    info:'40 TN · 4 ĐS · Không TLN',
+    badge:'Cấu trúc Phổ thông'
+  },
+];
 
-/* ---- PHẦN I ---- */
-function buildP1(){
+const CHUAN_DS=[0,0.1,0.25,0.5,1];
+let selectedSubject=null, currentStruct='chuan';
+const ans1={}, ans2={}, ans3={};
+
+/* =========== CHỌN MÔN =========== */
+function buildSubjectGrid(){
+  const g=document.getElementById('subject-grid');
+  SUBJECTS.forEach(s=>{
+    const card=document.createElement('div');
+    card.className='subject-card';
+    card.id='opt-'+s.id;
+    card.onclick=()=>selectSubject(s.id);
+    card.innerHTML=`<div class="sc-name">${s.name}</div>
+      <div class="sc-info">${s.info}</div>
+      <div class="sc-badge">${s.badge}</div>`;
+    g.appendChild(card);
+  });
+}
+
+function selectSubject(id){
+  selectedSubject=id;
+  document.querySelectorAll('.subject-card,.subject-custom').forEach(el=>el.classList.remove('active'));
+  const el=document.getElementById('opt-'+id);
+  if(el) el.classList.add('active');
+  document.getElementById('start-btn').disabled=false;
+}
+
+function startExam(){
+  const name=document.getElementById('hoten-sub').value.trim();
+  if(!name){alert('Vui lòng nhập họ tên thí sinh!');return;}
+  const sub=SUBJECTS.find(s=>s.id===selectedSubject);
+  buildExam(sub, name);
+  document.getElementById('subject-screen').style.display='none';
+  document.getElementById('exam').style.display='block';
+}
+
+function goSubject(){
+  document.getElementById('subject-screen').style.display='flex';
+  document.getElementById('exam').style.display='none';
+}
+
+/* =========== XÂY PHIẾU =========== */
+function buildExam(sub, name){
+  // clear
+  ['p1grid','p2grid','p3grid'].forEach(id=>document.getElementById(id).innerHTML='');
+  Object.keys(ans1).forEach(k=>delete ans1[k]);
+  Object.keys(ans2).forEach(k=>delete ans2[k]);
+  Object.keys(ans3).forEach(k=>delete ans3[k]);
+
+  document.getElementById('exam-name').textContent=name;
+  document.getElementById('exam-mon').textContent=sub?sub.name:'Tuỳ chỉnh';
+  document.getElementById('exam-subtitle').textContent=sub?sub.info:'';
+
+  const n1=sub?sub.p1:40, n2=sub?sub.p2:4, n3=sub?sub.p3:6;
+
+  // Phần I
+  buildP1(n1);
+  document.getElementById('p1-title').textContent=`PHẦN I — Trắc nghiệm (${n1} câu · A / B / C / D)`;
+  document.getElementById('p1-section').classList.toggle('hidden', n1===0);
+
+  // Phần II
+  buildP2(n2);
+  document.getElementById('p2-section').classList.toggle('hidden', n2===0);
+
+  // Phần III
+  buildP3(n3);
+  document.getElementById('p3-section').classList.toggle('hidden', n3===0);
+}
+
+function resetExam(){
+  const sub=SUBJECTS.find(s=>s.id===selectedSubject);
+  const name=document.getElementById('exam-name').textContent;
+  buildExam(sub,name);
+}
+
+/* =========== PHẦN I =========== */
+function buildP1(n){
   const grid=document.getElementById('p1grid');
-  const cols=[
-    [...Array(10)].map((_,i)=>i+1),
-    [...Array(10)].map((_,i)=>i+11),
-    [...Array(10)].map((_,i)=>i+21),
-    [...Array(10)].map((_,i)=>i+31),
-  ];
-  cols.forEach((qs,ci)=>{
+  grid.innerHTML='';
+  if(n===0) return;
+
+  // Tính số cột: ≤10 → 1 cột, ≤20 → 2, ≤30 → 3, else 4
+  const numCols=n<=10?1:n<=20?2:n<=30?3:4;
+  const perCol=Math.ceil(n/numCols);
+  grid.style.gridTemplateColumns=`repeat(${numCols},1fr)`;
+
+  for(let ci=0;ci<numCols;ci++){
     const col=document.createElement('div'); col.className='q-col';
     const hdr=document.createElement('div'); hdr.className='col-hdr';
-    hdr.innerHTML='<span style="width:26px"></span><span>A</span><span>B</span><span>C</span><span>D</span>';
+    hdr.innerHTML=`<span style="width:26px"></span><span>A</span><span>B</span><span>C</span><span>D</span>`;
     col.appendChild(hdr);
-    qs.forEach(q=>{
+    const start=ci*perCol+1, end=Math.min(start+perCol-1,n);
+    for(let q=start;q<=end;q++){
       const row=document.createElement('div');
-      row.className='q-row'+(ci===3?' hl':'');
+      row.className='q-row';
       row.innerHTML=`<span class="q-num">${q}</span>`;
       ['A','B','C','D'].forEach(opt=>{
         const b=document.createElement('div'); b.className='bubble';
@@ -285,20 +474,23 @@ function buildP1(){
         b.onclick=()=>{
           document.querySelectorAll(`.bubble[data-q="${q}"]`).forEach(x=>x.classList.remove('sel'));
           if(ans1[q]===opt) delete ans1[q];
-          else{ans1[q]=opt; b.classList.add('sel');}
+          else{ans1[q]=opt;b.classList.add('sel');}
         };
         row.appendChild(b);
       });
       col.appendChild(row);
-    });
+    }
     grid.appendChild(col);
-  });
+  }
 }
 
-/* ---- PHẦN II ---- */
-function buildP2(){
+/* =========== PHẦN II =========== */
+function buildP2(n){
   const grid=document.getElementById('p2grid');
-  for(let c=1;c<=4;c++){
+  grid.innerHTML='';
+  if(n===0) return;
+  grid.style.gridTemplateColumns=`repeat(${Math.min(n,4)},1fr)`;
+  for(let c=1;c<=n;c++){
     ans2[c]={a:null,b:null,c:null,d:null};
     const block=document.createElement('div'); block.className='p2-block';
     block.innerHTML=`<div class="p2-title">Câu ${c}</div>`;
@@ -320,18 +512,21 @@ function buildP2(){
 }
 
 function selP2(cau,opt,type,el,other){
-  if(ans2[cau][opt]===type){ans2[cau][opt]=null; el.classList.remove('sd','ss');}
-  else{ans2[cau][opt]=type; other.classList.remove('sd','ss'); el.classList.add(type==='D'?'sd':'ss');}
+  if(ans2[cau]&&ans2[cau][opt]===type){ans2[cau][opt]=null;el.classList.remove('sd','ss');}
+  else{if(ans2[cau])ans2[cau][opt]=type;other.classList.remove('sd','ss');el.classList.add(type==='D'?'sd':'ss');}
 }
 
-/* ---- PHẦN III ---- */
-function buildP3(){
+/* =========== PHẦN III =========== */
+function buildP3(n){
   const grid=document.getElementById('p3grid');
-  for(let c=1;c<=6;c++){
+  grid.innerHTML='';
+  if(n===0) return;
+  grid.style.gridTemplateColumns=`repeat(${Math.min(n,3)},1fr)`;
+  for(let c=1;c<=n;c++){
     ans3[c]='';
     const block=document.createElement('div'); block.className='p3-block';
     block.innerHTML=`<div class="p3-title">Câu ${c}</div>`;
-    const inp=document.createElement('input'); inp.type='text'; inp.className='p3-input';
+    const inp=document.createElement('input'); inp.type='text'; inp.className='p3-inp';
     inp.placeholder='Nhập đáp án...';
     inp.oninput=e=>{ans3[c]=e.target.value.trim();};
     block.appendChild(inp);
@@ -339,19 +534,27 @@ function buildP3(){
   }
 }
 
-/* ---- CẤU TRÚC ĐIỂM ---- */
-function setStruct(s){
-  currentStruct=s;
-  ['chuan','phothong','linhhoat'].forEach(x=>{
-    document.getElementById('opt-'+x).classList.toggle('active',x===s);
-  });
-  document.getElementById('flex-inputs').classList.toggle('show',s==='linhhoat');
-}
-
-/* ---- NAVIGATE ---- */
+/* =========== NAVIGATE =========== */
 function goGrade(){
-  document.getElementById('g-ten').textContent=document.getElementById('hoten').value||'—';
-  document.getElementById('g-done').textContent=Object.keys(ans1).length+' / 40';
+  const sub=SUBJECTS.find(s=>s.id===selectedSubject);
+  const name=document.getElementById('exam-name').textContent;
+  document.getElementById('g-ten').textContent=name||'—';
+  document.getElementById('g-mon').textContent=sub?sub.name:'Tuỳ chỉnh';
+  document.getElementById('g-done').textContent=Object.keys(ans1).length+' / '+(sub?sub.p1:40);
+
+  // Set cấu trúc điểm mặc định theo môn
+  const defaultStruct=sub?sub.struct:'chuan';
+  setStruct(defaultStruct);
+
+  // Set số câu mặc định theo môn
+  document.getElementById('cfg-p1').value=sub?sub.p1:40;
+  document.getElementById('cfg-p2').value=sub?sub.p2:4;
+  document.getElementById('cfg-p3').value=sub?sub.p3:6;
+
+  // Note TLN đặc biệt cho Lý
+  const gradeSubtitle=sub?`${sub.name} · ${sub.info}`:'Tuỳ chỉnh';
+  document.getElementById('grade-subtitle').textContent=gradeSubtitle;
+
   applyConfig();
   document.getElementById('exam').style.display='none';
   document.getElementById('grade').style.display='block';
@@ -360,20 +563,31 @@ function goGrade(){
   document.getElementById('scoredet').textContent='';
 }
 
-function back(){
+function backToExam(){
   document.getElementById('exam').style.display='block';
   document.getElementById('grade').style.display='none';
 }
 
-/* ---- CONFIG ---- */
+/* =========== CẤU TRÚC ĐIỂM =========== */
+function setStruct(s){
+  currentStruct=s;
+  ['chuan','phothong','linhhoat'].forEach(x=>{
+    document.getElementById('opt-'+x).classList.toggle('active',x===s);
+  });
+  document.getElementById('flex-inputs').classList.toggle('show',s==='linhhoat');
+}
+
+/* =========== CONFIG =========== */
 function applyConfig(){
-  const n1=Math.min(40,Math.max(1,parseInt(document.getElementById('cfg-p1').value)||40));
-  const n2=Math.min(4, Math.max(1,parseInt(document.getElementById('cfg-p2').value)||4));
-  const n3=Math.min(6, Math.max(1,parseInt(document.getElementById('cfg-p3').value)||6));
+  const n1=Math.min(40,Math.max(0,parseInt(document.getElementById('cfg-p1').value)||0));
+  const n2=Math.min(4, Math.max(0,parseInt(document.getElementById('cfg-p2').value)||0));
+  const n3=Math.min(6, Math.max(0,parseInt(document.getElementById('cfg-p3').value)||0));
   document.getElementById('cfg-p1').value=n1;
   document.getElementById('cfg-p2').value=n2;
   document.getElementById('cfg-p3').value=n3;
   buildKeyP1(n1); buildKeyP2(n2); buildKeyP3(n3);
+  document.getElementById('p2-key-section').classList.toggle('hidden',n2===0);
+  document.getElementById('p3-key-section').classList.toggle('hidden',n3===0);
   document.getElementById('breakdown').style.display='none';
   document.getElementById('scorenum').textContent='—';
   document.getElementById('scoredet').textContent='';
@@ -390,6 +604,7 @@ function buildKeyP1(n){
 
 function buildKeyP2(n){
   const g=document.getElementById('p2keygrid'); g.innerHTML='';
+  g.style.gridTemplateColumns=`repeat(${Math.min(n,4)},1fr)`;
   for(let c=1;c<=n;c++){
     const block=document.createElement('div'); block.className='p2-key-block';
     block.innerHTML=`<div class="p2-key-title">Câu ${c}</div>`;
@@ -397,9 +612,7 @@ function buildKeyP2(n){
       const row=document.createElement('div'); row.className='p2-key-row';
       row.innerHTML=`<label>${opt})</label>
         <select id="kp2-${c}-${opt}">
-          <option value="">—</option>
-          <option value="D">Đúng</option>
-          <option value="S">Sai</option>
+          <option value="">—</option><option value="D">Đúng</option><option value="S">Sai</option>
         </select>`;
       block.appendChild(row);
     });
@@ -409,43 +622,32 @@ function buildKeyP2(n){
 
 function buildKeyP3(n){
   const g=document.getElementById('p3keygrid'); g.innerHTML='';
+  g.style.gridTemplateColumns=`repeat(${Math.min(n,3)},1fr)`;
   for(let c=1;c<=n;c++){
     const block=document.createElement('div'); block.className='p3-key-block';
     block.innerHTML=`<div class="p3-key-title">Câu ${c}</div>
-      <input type="text" class="p3-key-input" id="kp3-${c}" placeholder="Đáp án đúng">`;
+      <input type="text" class="p3-key-inp" id="kp3-${c}" placeholder="Đáp án đúng">`;
     g.appendChild(block);
   }
 }
 
-/* ---- CHẤM ĐIỂM ---- */
-// Thang điểm đúng sai chuẩn: 0/4→0đ, 1/4→0.1đ, 2/4→0.25đ, 3/4→0.5đ, 4/4→1đ
-const CHUAN_DS = [0, 0.1, 0.25, 0.5, 1];
-
-function scoreP2Cau(c, n2, struct, flP2){
-  let correct=0;
-  ['a','b','c','d'].forEach(opt=>{
-    const key=document.getElementById(`kp2-${c}-${opt}`)?.value||'';
-    if(key && ans2[c]?.[opt]===key) correct++;
-  });
-  if(struct==='chuan') return CHUAN_DS[correct];
-  if(struct==='phothong') return correct*0.25;
-  return correct*flP2; // linhhoat
-}
-
+/* =========== CHẤM ĐIỂM =========== */
 function doGrade(){
-  const n1=parseInt(document.getElementById('cfg-p1').value)||40;
-  const n2=parseInt(document.getElementById('cfg-p2').value)||4;
-  const n3=parseInt(document.getElementById('cfg-p3').value)||6;
+  const n1=parseInt(document.getElementById('cfg-p1').value)||0;
+  const n2=parseInt(document.getElementById('cfg-p2').value)||0;
+  const n3=parseInt(document.getElementById('cfg-p3').value)||0;
   const flP1=parseFloat(document.getElementById('fl-p1')?.value)||0.25;
   const flP2=parseFloat(document.getElementById('fl-p2')?.value)||0.25;
   const flP3=parseFloat(document.getElementById('fl-p3')?.value)||0.5;
+
+  const sub=SUBJECTS.find(s=>s.id===selectedSubject);
+  const tlnScore = currentStruct==='linhhoat' ? flP3 : (sub?sub.tlnScore:0.5);
   const perTN = currentStruct==='linhhoat' ? flP1 : 0.25;
-  const perTLN = currentStruct==='linhhoat' ? flP3 : 0.5;
 
   let score=0;
 
-  // PHẦN I
-  let p1c=0, p1t=0;
+  // P1
+  let p1c=0,p1t=0;
   const rg1=document.getElementById('rg1'); rg1.innerHTML='';
   for(let q=1;q<=n1;q++){
     const key=document.getElementById('k'+q)?.value||'';
@@ -462,28 +664,32 @@ function doGrade(){
     rg1.appendChild(item);
   }
 
-  // PHẦN II
+  // P2
   let p2score=0;
   const rg2=document.getElementById('rg2'); rg2.innerHTML='';
+  document.getElementById('rg2-wrap').classList.toggle('hidden',n2===0);
   for(let c=1;c<=n2;c++){
-    const cs=scoreP2Cau(c,n2,currentStruct,flP2);
-    score+=cs; p2score+=cs;
-    // đếm ý đúng để hiển thị
     let correct=0;
     ['a','b','c','d'].forEach(opt=>{
       const key=document.getElementById(`kp2-${c}-${opt}`)?.value||'';
       if(key && ans2[c]?.[opt]===key) correct++;
     });
-    const maxDs = currentStruct==='chuan'?1 : currentStruct==='phothong'?1 : 4*flP2;
+    let cs=0;
+    if(currentStruct==='chuan') cs=CHUAN_DS[correct];
+    else if(currentStruct==='phothong') cs=correct*0.25;
+    else cs=correct*flP2;
+    score+=cs; p2score+=cs;
+    const maxDs=currentStruct==='chuan'?1:currentStruct==='phothong'?1:4*flP2;
     const item=document.createElement('div');
     item.className='res-item '+(cs===maxDs?'ok':cs>0?'blank':'wrong');
     item.innerHTML=`<span class="rn">C${c}:</span><span>${correct}/4 ý → ${cs.toFixed(2)}đ</span><span class="rm">${cs===maxDs?'✓':cs>0?'~':'✗'}</span>`;
     rg2.appendChild(item);
   }
 
-  // PHẦN III
+  // P3
   let p3c=0;
   const rg3=document.getElementById('rg3'); rg3.innerHTML='';
+  document.getElementById('rg3-wrap').classList.toggle('hidden',n3===0);
   for(let c=1;c<=n3;c++){
     const key=(document.getElementById(`kp3-${c}`)?.value||'').trim().toLowerCase();
     const st=(ans3[c]||'').toLowerCase();
@@ -491,24 +697,23 @@ function doGrade(){
     let cls='',mark='';
     if(!key){cls='';mark='';}
     else if(!st){cls='blank';mark='○';}
-    else if(st===key){cls='ok';mark='✓';p3c++;score+=perTLN;}
+    else if(st===key){cls='ok';mark='✓';p3c++;score+=tlnScore;}
     else{cls='wrong';mark='✗';}
     item.classList.add(cls);
     item.innerHTML=`<span class="rn">C${c}:</span><span>${ans3[c]||'—'}</span><span class="rm">${mark}</span>`;
     rg3.appendChild(item);
   }
 
-  const structLabel = currentStruct==='chuan'?'Chuẩn':currentStruct==='phothong'?'Phổ thông':'Linh hoạt';
+  const structLabel=currentStruct==='chuan'?'Chuẩn':currentStruct==='phothong'?'Phổ thông':'Linh hoạt';
+  let detail=`Cấu trúc: ${structLabel}\nPhần I: ${p1c}/${p1t} câu × ${perTN}đ = ${(p1c*perTN).toFixed(2)}đ`;
+  if(n2>0) detail+=`\nPhần II: ${p2score.toFixed(2)}đ`;
+  if(n3>0) detail+=`\nPhần III: ${p3c}/${n3} câu × ${tlnScore}đ = ${(p3c*tlnScore).toFixed(2)}đ`;
   document.getElementById('scorenum').textContent=score.toFixed(2);
-  document.getElementById('scoredet').textContent=
-    `Cấu trúc: ${structLabel}\n`+
-    `Phần I: ${p1c}/${p1t} câu đúng × ${perTN}đ = ${(p1c*perTN).toFixed(2)}đ\n`+
-    `Phần II: ${p2score.toFixed(2)}đ\n`+
-    `Phần III: ${p3c}/${n3} câu đúng × ${perTLN}đ = ${(p3c*perTLN).toFixed(2)}đ`;
+  document.getElementById('scoredet').textContent=detail;
   document.getElementById('breakdown').style.display='block';
 }
 
-buildP1(); buildP2(); buildP3();
+buildSubjectGrid();
 </script>
 </body>
 </html>
