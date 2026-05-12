@@ -12,7 +12,21 @@ h1{font-size:22px;font-weight:700;text-align:center;letter-spacing:1px;margin-bo
 .subtitle{text-align:center;font-size:14px;color:#666;margin-bottom:20px}
 .section-title{font-size:16px;font-weight:700;margin:16px 0 9px;border-left:4px solid #c00;padding-left:10px}
 
-#subject-screen{display:flex;flex-direction:column;align-items:center;padding:24px}
+/* TIMER */
+.timer-bar{position:sticky;top:0;z-index:100;background:#fff;border-bottom:2px solid #eee;padding:10px 20px;display:flex;align-items:center;justify-content:space-between;width:100%;max-width:760px;border-radius:8px 8px 0 0;box-shadow:0 2px 8px rgba(0,0,0,0.08)}
+.timer-left{display:flex;flex-direction:column;gap:2px}
+.timer-subject{font-size:13px;color:#888;font-weight:600}
+.timer-time{font-size:28px;font-weight:700;font-family:monospace;color:#111;letter-spacing:2px}
+.timer-time.warn{color:#e07000}
+.timer-time.danger{color:#c00;animation:blink .8s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.4}}
+.timer-right{display:flex;flex-direction:column;align-items:flex-end;gap:4px}
+.timer-progress-wrap{width:160px;height:8px;background:#eee;border-radius:4px;overflow:hidden}
+.timer-progress{height:100%;background:#2a7a2a;border-radius:4px;transition:width .5s,background .5s}
+.timer-elapsed{font-size:12px;color:#aaa}
+
+/* CHỌN MÔN */
+#subject-screen{display:flex;flex-direction:column;align-items:center;padding:0}
 #subject-screen .paper{max-width:600px}
 .subject-title{font-size:22px;font-weight:700;text-align:center;margin-bottom:6px}
 .subject-sub{text-align:center;font-size:14px;color:#666;margin-bottom:24px}
@@ -20,8 +34,9 @@ h1{font-size:22px;font-weight:700;text-align:center;letter-spacing:1px;margin-bo
 .subject-card{border:2px solid #ddd;border-radius:10px;padding:16px 14px;cursor:pointer;transition:border-color .15s,background .15s;user-select:none}
 .subject-card:hover{border-color:#c00;background:#fff5f5}
 .subject-card.active{border-color:#c00;background:#fff0f0}
-.subject-card .sc-name{font-size:17px;font-weight:700;margin-bottom:6px}
+.subject-card .sc-name{font-size:17px;font-weight:700;margin-bottom:4px}
 .subject-card .sc-info{font-size:12px;color:#666;line-height:1.7}
+.subject-card .sc-time{font-size:12px;color:#c00;font-weight:700;margin-top:4px}
 .subject-card .sc-badge{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:4px;margin-top:6px;background:#f5e6e6;color:#c00}
 .subject-custom{border:2px dashed #bbb;border-radius:10px;padding:14px;cursor:pointer;transition:border-color .15s;user-select:none;text-align:center;margin-bottom:16px}
 .subject-custom:hover{border-color:#c00}
@@ -31,6 +46,15 @@ h1{font-size:22px;font-weight:700;text-align:center;letter-spacing:1px;margin-bo
 .start-btn{display:block;width:100%;padding:13px;font-family:inherit;font-size:17px;font-weight:700;background:#c00;color:#fff;border:none;border-radius:8px;cursor:pointer;transition:opacity .2s}
 .start-btn:hover{opacity:.87}
 .start-btn:disabled{opacity:.4;cursor:default}
+
+/* SAVED SESSION */
+.saved-banner{background:#fff8e1;border:1px solid #ffe082;border-radius:8px;padding:12px 16px;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.saved-banner .sb-text{font-size:13px;color:#555}
+.saved-banner .sb-text strong{color:#c00}
+.saved-banner .sb-btns{display:flex;gap:8px;flex-shrink:0}
+.sb-btn{padding:6px 14px;font-family:inherit;font-size:13px;font-weight:700;border:none;border-radius:5px;cursor:pointer}
+.sb-btn-resume{background:#c00;color:#fff}
+.sb-btn-discard{background:#eee;color:#555;border:1px solid #ccc}
 
 #exam{display:none}
 .q-grid{display:grid;gap:4px 12px;border:1px solid #ccc;border-radius:8px;padding:14px}
@@ -81,7 +105,7 @@ h1{font-size:22px;font-weight:700;text-align:center;letter-spacing:1px;margin-bo
 .btn-secondary{background:#eee;color:#333;border:1px solid #ccc}
 
 #grade{display:none}
-.g-info{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:20px}
+.g-info{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px}
 .g-card{background:#f5f5f5;border-radius:6px;padding:10px 14px}
 .g-card .lbl{font-size:13px;color:#888;margin-bottom:3px}
 .g-card .val{font-size:16px;font-weight:700}
@@ -111,9 +135,7 @@ h1{font-size:22px;font-weight:700;text-align:center;letter-spacing:1px;margin-bo
 .apply-btn{padding:8px 22px;font-family:inherit;font-size:14px;font-weight:700;background:#555;color:#fff;border:none;border-radius:6px;cursor:pointer}
 .apply-btn:hover{background:#333}
 .key-paper{border:1px solid #ccc;border-radius:8px;padding:14px;background:#fff}
-.key-paper .q-grid{border:none;padding:0}
-.key-paper .p2-grid{border:none;padding:0}
-.key-paper .p3-grid{border:none;padding:0}
+.key-paper .q-grid,.key-paper .p2-grid,.key-paper .p3-grid{border:none;padding:0}
 .score-box{text-align:center;border:2px solid #c00;border-radius:10px;padding:22px;margin:18px 0}
 .score-num{font-size:60px;font-weight:700;color:#c00;line-height:1}
 .score-lbl{font-size:15px;color:#666;margin-top:8px}
@@ -125,10 +147,28 @@ h1{font-size:22px;font-weight:700;text-align:center;letter-spacing:1px;margin-bo
 .legend-item{display:flex;align-items:center;gap:5px}
 .leg-dot{width:14px;height:14px;border-radius:50%;display:inline-block}
 .hidden{display:none!important}
+
+/* TIMEOUT OVERLAY */
+.timeout-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center;z-index:999}
+.timeout-box{background:#fff;border-radius:12px;padding:36px 40px;text-align:center;max-width:360px}
+.timeout-box h2{font-size:22px;font-weight:700;margin-bottom:10px;color:#c00}
+.timeout-box p{font-size:15px;color:#555;margin-bottom:22px;line-height:1.6}
+.timeout-box button{padding:10px 32px;font-family:inherit;font-size:15px;font-weight:700;background:#c00;color:#fff;border:none;border-radius:6px;cursor:pointer}
 </style>
-  <title>Phiếu trắc nghiệm 1.0.2</title>
 </head>
 <body>
+
+<!-- TIMER BAR (hidden until exam) -->
+<div id="timer-bar" class="timer-bar hidden">
+  <div class="timer-left">
+    <div class="timer-subject" id="timer-subject-label"></div>
+    <div class="timer-time" id="timer-display">50:00</div>
+  </div>
+  <div class="timer-right">
+    <div class="timer-progress-wrap"><div class="timer-progress" id="timer-progress" style="width:100%"></div></div>
+    <div class="timer-elapsed" id="timer-elapsed">Đã dùng: 0:00</div>
+  </div>
+</div>
 
 <!-- CHỌN MÔN -->
 <div id="subject-screen">
@@ -137,6 +177,7 @@ h1{font-size:22px;font-weight:700;text-align:center;letter-spacing:1px;margin-bo
   <div class="corner bl"></div><div class="corner br"></div>
   <div class="subject-title">PHIẾU TRẢ LỜI TRẮC NGHIỆM</div>
   <div class="subject-sub">Chọn môn học để bắt đầu</div>
+  <div id="saved-banner" class="hidden"></div>
   <div class="subject-grid" id="subject-grid"></div>
   <div class="subject-custom" id="opt-custom" onclick="selectSubject('custom')">
     <div class="sc-name">Tuỳ chỉnh</div>
@@ -180,12 +221,11 @@ h1{font-size:22px;font-weight:700;text-align:center;letter-spacing:1px;margin-bo
   <div class="corner bl"></div><div class="corner br"></div>
   <h1>CHẤM BÀI TRẮC NGHIỆM</h1>
   <div class="subtitle" id="grade-subtitle"></div>
-
   <div class="g-info">
     <div class="g-card"><div class="lbl">Môn học</div><div class="val" id="g-mon">—</div></div>
     <div class="g-card"><div class="lbl">Câu đã tô (P.I)</div><div class="val" id="g-done">—</div></div>
+    <div class="g-card"><div class="lbl">Thời gian làm bài</div><div class="val" id="g-time">—</div></div>
   </div>
-
   <div class="score-struct-box">
     <h3>Cấu trúc điểm</h3>
     <div class="struct-options">
@@ -208,7 +248,6 @@ h1{font-size:22px;font-weight:700;text-align:center;letter-spacing:1px;margin-bo
       <div class="flex-item"><label>TLN — điểm/câu</label><input type="number" id="fl-p3" value="0.5" step="0.05" min="0"><div class="flex-note">Mỗi câu TLN đúng</div></div>
     </div>
   </div>
-
   <div class="config-box">
     <h3>Số câu chấm</h3>
     <div class="config-grid">
@@ -218,7 +257,6 @@ h1{font-size:22px;font-weight:700;text-align:center;letter-spacing:1px;margin-bo
     </div>
     <button class="apply-btn" onclick="applyConfig()">Áp dụng</button>
   </div>
-
   <div class="section-title">Nhập đáp án — Phần I</div>
   <div class="key-paper"><div class="q-grid" id="key-p1grid"></div></div>
   <div id="key-p2-section">
@@ -229,14 +267,12 @@ h1{font-size:22px;font-weight:700;text-align:center;letter-spacing:1px;margin-bo
     <div class="section-title" style="margin-top:14px">Nhập đáp án — Phần III</div>
     <div class="key-paper"><div class="p3-grid" id="key-p3grid"></div></div>
   </div>
-
   <div class="score-box">
     <div class="score-lbl">Điểm số</div>
     <div class="score-num" id="scorenum">—</div>
     <div class="score-detail" id="scoredet"></div>
   </div>
   <button class="mark-btn" onclick="doGrade()">Chấm điểm</button>
-
   <div id="graded-view" class="graded-view hidden">
     <div class="section-title" style="margin-top:20px">Bài làm đã chấm</div>
     <div class="legend">
@@ -245,18 +281,9 @@ h1{font-size:22px;font-weight:700;text-align:center;letter-spacing:1px;margin-bo
       <div class="legend-item"><div class="leg-dot" style="background:#fff;border:2px solid #2a7a2a;box-shadow:0 0 0 2px #2a7a2a"></div> Đáp án đúng</div>
       <div class="legend-item" style="color:#888;font-size:12px">○ = bỏ trống</div>
     </div>
-    <div id="gv-p1-wrap">
-      <div class="section-title" style="font-size:14px;margin-bottom:6px">Phần I</div>
-      <div class="q-grid" id="gv-p1grid"></div>
-    </div>
-    <div id="gv-p2-wrap" class="hidden">
-      <div class="section-title" style="font-size:14px;margin:12px 0 6px">Phần II</div>
-      <div class="p2-grid" id="gv-p2grid"></div>
-    </div>
-    <div id="gv-p3-wrap" class="hidden">
-      <div class="section-title" style="font-size:14px;margin:12px 0 6px">Phần III</div>
-      <div class="p3-grid" id="gv-p3grid"></div>
-    </div>
+    <div id="gv-p1-wrap"><div class="section-title" style="font-size:14px;margin-bottom:6px">Phần I</div><div class="q-grid" id="gv-p1grid"></div></div>
+    <div id="gv-p2-wrap" class="hidden"><div class="section-title" style="font-size:14px;margin:12px 0 6px">Phần II</div><div class="p2-grid" id="gv-p2grid"></div></div>
+    <div id="gv-p3-wrap" class="hidden"><div class="section-title" style="font-size:14px;margin:12px 0 6px">Phần III</div><div class="p3-grid" id="gv-p3grid"></div></div>
   </div>
 </div>
 <div class="btn-bar">
@@ -264,52 +291,232 @@ h1{font-size:22px;font-weight:700;text-align:center;letter-spacing:1px;margin-bo
 </div>
 </div>
 
+<!-- TIMEOUT OVERLAY -->
+<div id="timeout-overlay" class="timeout-overlay hidden">
+  <div class="timeout-box">
+    <h2>Hết giờ!</h2>
+    <p>Thời gian làm bài đã kết thúc.<br>Bài làm của bạn đã được lưu lại.</p>
+    <button onclick="goGrade();document.getElementById('timeout-overlay').classList.add('hidden')">Chuyển sang chấm bài →</button>
+  </div>
+</div>
+
 <script>
 const SUBJECTS=[
-  {id:'toan',name:'Toán',p1:12,p2:4,p3:6,struct:'chuan',tlnScore:0.5,info:'12 TN · 4 ĐS · 6 TLN',badge:'Cấu trúc Chuẩn'},
-  {id:'ly',name:'Vật Lý',p1:18,p2:4,p3:6,struct:'chuan',tlnScore:0.25,info:'18 TN · 4 ĐS · 6 TLN',badge:'TLN 0,25đ/câu'},
-  {id:'tin',name:'Tin học',p1:24,p2:4,p3:0,struct:'chuan',tlnScore:0,info:'24 TN · 4 ĐS',badge:'Cấu trúc Chuẩn'},
-  {id:'hoa',name:'Hóa học',p1:28,p2:4,p3:6,struct:'chuan',tlnScore:0.5,info:'28 TN · 4 ĐS · 6 TLN',badge:'Cấu trúc Chuẩn'},
-  {id:'sinh',name:'Sinh học',p1:28,p2:4,p3:6,struct:'chuan',tlnScore:0.5,info:'28 TN · 4 ĐS · 6 TLN',badge:'Cấu trúc Chuẩn'},
-  {id:'su',name:'Lịch Sử',p1:40,p2:4,p3:0,struct:'phothong',tlnScore:0,info:'40 TN · 4 ĐS',badge:'Phổ thông'},
-  {id:'dia',name:'Địa lý',p1:40,p2:4,p3:0,struct:'phothong',tlnScore:0,info:'40 TN · 4 ĐS',badge:'Phổ thông'},
-  {id:'gdkt',name:'GDKT&PL',p1:40,p2:4,p3:0,struct:'phothong',tlnScore:0,info:'40 TN · 4 ĐS',badge:'Phổ thông'},
+  {id:'toan',  name:'Toán',     p1:12,p2:4,p3:6, struct:'chuan',   tlnScore:0.5,  minutes:90, info:'12 TN · 4 ĐS · 6 TLN', badge:'Cấu trúc Chuẩn'},
+  {id:'ly',    name:'Vật Lý',   p1:18,p2:4,p3:6, struct:'chuan',   tlnScore:0.25, minutes:50, info:'18 TN · 4 ĐS · 6 TLN', badge:'TLN 0,25đ/câu'},
+  {id:'hoa',   name:'Hóa học',  p1:28,p2:4,p3:6, struct:'chuan',   tlnScore:0.5,  minutes:50, info:'28 TN · 4 ĐS · 6 TLN', badge:'Cấu trúc Chuẩn'},
+  {id:'sinh',  name:'Sinh học', p1:28,p2:4,p3:6, struct:'chuan',   tlnScore:0.5,  minutes:50, info:'28 TN · 4 ĐS · 6 TLN', badge:'Cấu trúc Chuẩn'},
+  {id:'tin',   name:'Tin học',  p1:24,p2:4,p3:0, struct:'chuan',   tlnScore:0,    minutes:50, info:'24 TN · 4 ĐS',          badge:'Cấu trúc Chuẩn'},
+  {id:'su',    name:'Lịch Sử',  p1:40,p2:4,p3:0, struct:'phothong',tlnScore:0,    minutes:50, info:'40 TN · 4 ĐS',          badge:'Phổ thông'},
+  {id:'dia',   name:'Địa lý',   p1:40,p2:4,p3:0, struct:'phothong',tlnScore:0,    minutes:50, info:'40 TN · 4 ĐS',          badge:'Phổ thông'},
+  {id:'gdkt',  name:'GDKT&PL',  p1:40,p2:4,p3:0, struct:'phothong',tlnScore:0,    minutes:50, info:'40 TN · 4 ĐS',          badge:'Phổ thông'},
+  {id:'van',   name:'Ngữ Văn',  p1:0, p2:0,p3:0, struct:'chuan',   tlnScore:0,    minutes:120,info:'Tự luận',               badge:'Tự luận'},
+  {id:'anh',   name:'Tiếng Anh',p1:40,p2:4,p3:0, struct:'phothong',tlnScore:0,    minutes:60, info:'40 TN · 4 ĐS',          badge:'Phổ thông'},
 ];
+
 const CHUAN_DS=[0,0.1,0.25,0.5,1];
+const LS_KEY='trac_nghiem_session';
 let selectedSubject=null, currentStruct='chuan';
 const ans1={},ans2={},ans3={},key1={},key2={},key3={};
 
+// Timer state
+let timerInterval=null, timerTotal=0, timerRemaining=0, timerStartTs=null, timerElapsedOnLoad=0;
+
+/* ======== LOCAL STORAGE ======== */
+function saveSession(){
+  const data={
+    subjectId: selectedSubject,
+    ans1: {...ans1},
+    ans2: JSON.parse(JSON.stringify(ans2)),
+    ans3: {...ans3},
+    timerElapsed: timerStartTs ? Math.floor((Date.now()-timerStartTs)/1000)+timerElapsedOnLoad : timerElapsedOnLoad,
+    savedAt: Date.now()
+  };
+  try{ localStorage.setItem(LS_KEY, JSON.stringify(data)); }catch(e){}
+}
+
+function loadSession(){
+  try{
+    const raw=localStorage.getItem(LS_KEY);
+    if(!raw) return null;
+    return JSON.parse(raw);
+  }catch(e){return null;}
+}
+
+function clearSession(){
+  try{ localStorage.removeItem(LS_KEY); }catch(e){}
+}
+
+function checkSavedSession(){
+  const sess=loadSession();
+  if(!sess) return;
+  const sub=SUBJECTS.find(s=>s.id===sess.subjectId);
+  if(!sub) return;
+  const savedMins=Math.floor(sess.timerElapsed/60);
+  const timeAgo=Math.round((Date.now()-sess.savedAt)/60000);
+  const banner=document.getElementById('saved-banner');
+  banner.classList.remove('hidden');
+  banner.innerHTML=`
+    <div class="sb-text">Có bài <strong>${sub.name}</strong> đang dở — đã làm ${savedMins} phút (${timeAgo} phút trước)</div>
+    <div class="sb-btns">
+      <button class="sb-btn sb-btn-resume" onclick="resumeSession()">Tiếp tục</button>
+      <button class="sb-btn sb-btn-discard" onclick="discardSession()">Bỏ</button>
+    </div>`;
+}
+
+function resumeSession(){
+  const sess=loadSession();
+  if(!sess) return;
+  const sub=SUBJECTS.find(s=>s.id===sess.subjectId);
+  if(!sub) return;
+  selectSubject(sess.subjectId);
+  buildExam(sub);
+  // restore answers
+  Object.assign(ans1, sess.ans1||{});
+  if(sess.ans2) Object.keys(sess.ans2).forEach(c=>{ans2[c]=sess.ans2[c];});
+  Object.assign(ans3, sess.ans3||{});
+  // re-render selected bubbles
+  restoreBubbles(sub);
+  // restore timer
+  timerElapsedOnLoad=sess.timerElapsed||0;
+  document.getElementById('subject-screen').style.display='none';
+  document.getElementById('exam').style.display='block';
+  startTimer(sub, timerElapsedOnLoad);
+}
+
+function restoreBubbles(sub){
+  const n1=sub.p1,n2=sub.p2;
+  Object.keys(ans1).forEach(q=>{
+    const b=document.getElementById(`p1grid-b${q}-${ans1[q]}`);
+    if(b) b.classList.add('sel');
+  });
+  for(let c=1;c<=n2;c++){
+    ['a','b','c','d'].forEach(opt=>{
+      const v=ans2[c]?.[opt];
+      if(v){
+        const el=document.getElementById(`p2grid-p2c${c}${opt}${v}`);
+        if(el) el.classList.add(v==='D'?'sd':'ss');
+      }
+    });
+  }
+  for(let c=1;c<=(sub.p3||0);c++){
+    const inp=document.getElementById(`p3grid-p3inp${c}`);
+    if(inp&&ans3[c]) inp.value=ans3[c];
+  }
+}
+
+function discardSession(){
+  clearSession();
+  document.getElementById('saved-banner').classList.add('hidden');
+}
+
+/* ======== TIMER ======== */
+function startTimer(sub, elapsedAlready=0){
+  if(timerInterval) clearInterval(timerInterval);
+  timerTotal = (sub&&sub.id!=='custom') ? sub.minutes*60 : 0;
+  timerElapsedOnLoad = elapsedAlready;
+  timerStartTs = Date.now();
+  timerRemaining = Math.max(0, timerTotal - elapsedAlready);
+
+  const bar=document.getElementById('timer-bar');
+  const label=document.getElementById('timer-subject-label');
+  const disp=document.getElementById('timer-display');
+  const prog=document.getElementById('timer-progress');
+  const elapsed=document.getElementById('timer-elapsed');
+
+  bar.classList.remove('hidden');
+  label.textContent=(sub&&sub.id!=='custom')?`${sub.name} · ${sub.minutes} phút`:'Tuỳ chỉnh';
+
+  if(timerTotal===0){
+    // Tuỳ chỉnh: count up only
+    disp.textContent='00:00';
+    prog.style.width='0%';
+    prog.style.background='#2a7a2a';
+    timerInterval=setInterval(()=>{
+      const e=Math.floor((Date.now()-timerStartTs)/1000)+timerElapsedOnLoad;
+      disp.textContent=fmtTime(e);
+      elapsed.textContent='';
+      saveSession();
+    },1000);
+    return;
+  }
+
+  function tick(){
+    const elapsedNow=Math.floor((Date.now()-timerStartTs)/1000)+timerElapsedOnLoad;
+    const rem=Math.max(0, timerTotal-elapsedNow);
+    const pct=rem/timerTotal*100;
+    disp.textContent=fmtTime(rem);
+    prog.style.width=pct+'%';
+    prog.style.background=pct>30?'#2a7a2a':pct>10?'#e07000':'#c00';
+    disp.className='timer-time'+(pct<=10?' danger':pct<=30?' warn':'');
+    elapsed.textContent=`Đã dùng: ${fmtTime(elapsedNow)}`;
+    saveSession();
+    if(rem<=0){
+      clearInterval(timerInterval);
+      document.getElementById('timeout-overlay').classList.remove('hidden');
+    }
+  }
+  tick();
+  timerInterval=setInterval(tick,1000);
+}
+
+function stopTimer(){
+  if(timerInterval){clearInterval(timerInterval);timerInterval=null;}
+}
+
+function getElapsedSeconds(){
+  if(!timerStartTs) return timerElapsedOnLoad;
+  return Math.floor((Date.now()-timerStartTs)/1000)+timerElapsedOnLoad;
+}
+
+function fmtTime(secs){
+  const m=Math.floor(secs/60), s=secs%60;
+  return `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+}
+
+/* ======== CHỌN MÔN ======== */
 function buildSubjectGrid(){
   const g=document.getElementById('subject-grid');
   SUBJECTS.forEach(s=>{
     const c=document.createElement('div');c.className='subject-card';c.id='opt-'+s.id;
     c.onclick=()=>selectSubject(s.id);
-    c.innerHTML=`<div class="sc-name">${s.name}</div><div class="sc-info">${s.info}</div><div class="sc-badge">${s.badge}</div>`;
+    c.innerHTML=`<div class="sc-name">${s.name}</div>
+      <div class="sc-info">${s.info}</div>
+      <div class="sc-time">⏱ ${s.minutes} phút</div>
+      <div class="sc-badge">${s.badge}</div>`;
     g.appendChild(c);
   });
+  checkSavedSession();
 }
+
 function selectSubject(id){
   selectedSubject=id;
   document.querySelectorAll('.subject-card,.subject-custom').forEach(el=>el.classList.remove('active'));
   document.getElementById('opt-'+id)?.classList.add('active');
   document.getElementById('start-btn').disabled=false;
 }
+
 function startExam(){
   const sub=SUBJECTS.find(s=>s.id===selectedSubject);
+  clearSession();
   buildExam(sub);
   document.getElementById('subject-screen').style.display='none';
   document.getElementById('exam').style.display='block';
+  startTimer(sub,0);
 }
+
 function goSubject(){
+  stopTimer();
+  document.getElementById('timer-bar').classList.add('hidden');
   document.getElementById('subject-screen').style.display='flex';
   document.getElementById('exam').style.display='none';
 }
 
+/* ======== BUILD PHIẾU ======== */
 function buildExam(sub){
   ['p1grid','p2grid','p3grid'].forEach(id=>document.getElementById(id).innerHTML='');
   [ans1,ans2,ans3].forEach(o=>{Object.keys(o).forEach(k=>delete o[k]);});
-  const monLabel=sub?sub.name:'Tuỳ chỉnh';
-  document.getElementById('exam-subtitle').textContent=sub?`${sub.name} · ${sub.info}`:'';
+  document.getElementById('exam-subtitle').textContent=sub?`${sub.name} · ${sub.info} · ${sub.minutes} phút`:'';
   const n1=sub?sub.p1:40,n2=sub?sub.p2:4,n3=sub?sub.p3:6;
   buildP1(n1,'p1grid',ans1);
   document.getElementById('p1-title').textContent=`PHẦN I — Trắc nghiệm (${n1} câu · A / B / C / D)`;
@@ -319,11 +526,17 @@ function buildExam(sub){
   buildP3(n3,'p3grid',ans3);
   document.getElementById('p3-section').classList.toggle('hidden',n3===0);
 }
+
 function resetExam(){
   if(!confirm('Làm lại từ đầu?'))return;
-  buildExam(SUBJECTS.find(s=>s.id===selectedSubject));
+  const sub=SUBJECTS.find(s=>s.id===selectedSubject);
+  clearSession();
+  buildExam(sub);
+  stopTimer();
+  startTimer(sub,0);
 }
 
+/* ======== BUILDERS ======== */
 function buildP1(n,gridId,ansObj){
   const grid=document.getElementById(gridId);grid.innerHTML='';
   if(n===0)return;
@@ -346,6 +559,7 @@ function buildP1(n,gridId,ansObj){
           document.querySelectorAll(`#${gridId} .bubble[data-q="${q}"]`).forEach(x=>x.classList.remove('sel'));
           if(ansObj[q]===opt)delete ansObj[q];
           else{ansObj[q]=opt;b.classList.add('sel');}
+          saveSession();
         };
         row.appendChild(b);
       });
@@ -371,14 +585,15 @@ function buildP2(n,gridId,ansObj){
       row.innerHTML=`<span class="p2-label">${opt})</span>`;
       const bD=document.createElement('div');bD.className='p2-bubble';bD.textContent='✓';bD.id=`${gridId}-p2c${c}${opt}D`;
       const bS=document.createElement('div');bS.className='p2-bubble';bS.textContent='✗';bS.id=`${gridId}-p2c${c}${opt}S`;
-      bD.onclick=()=>selP2b(c,opt,'D',bD,bS,ansObj);
-      bS.onclick=()=>selP2b(c,opt,'S',bS,bD,ansObj);
+      bD.onclick=()=>{selP2b(c,opt,'D',bD,bS,ansObj);saveSession();};
+      bS.onclick=()=>{selP2b(c,opt,'S',bS,bD,ansObj);saveSession();};
       row.appendChild(bD);row.appendChild(bS);
       block.appendChild(row);
     });
     grid.appendChild(block);
   }
 }
+
 function selP2b(cau,opt,type,el,other,ansObj){
   if(ansObj[cau][opt]===type){ansObj[cau][opt]=null;el.classList.remove('sd','ss');}
   else{ansObj[cau][opt]=type;other.classList.remove('sd','ss');el.classList.add(type==='D'?'sd':'ss');}
@@ -394,16 +609,20 @@ function buildP3(n,gridId,ansObj){
     block.innerHTML=`<div class="p3-title">Câu ${c}</div>`;
     const inp=document.createElement('input');inp.type='text';inp.className='p3-inp';
     inp.id=`${gridId}-p3inp${c}`;inp.placeholder='Nhập đáp án...';
-    inp.oninput=e=>{ansObj[c]=e.target.value.trim();};
+    inp.oninput=e=>{ansObj[c]=e.target.value.trim();saveSession();};
     block.appendChild(inp);
     grid.appendChild(block);
   }
 }
 
+/* ======== NAVIGATE ======== */
 function goGrade(){
+  stopTimer();
   const sub=SUBJECTS.find(s=>s.id===selectedSubject);
+  const elapsed=getElapsedSeconds();
   document.getElementById('g-mon').textContent=sub?sub.name:'Tuỳ chỉnh';
   document.getElementById('g-done').textContent=Object.keys(ans1).length+' / '+(sub?sub.p1:40);
+  document.getElementById('g-time').textContent=fmtTime(elapsed)+(sub?' / '+fmtTime(sub.minutes*60):'');
   document.getElementById('grade-subtitle').textContent=sub?`${sub.name} · ${sub.info}`:'Tuỳ chỉnh';
   setStruct(sub?sub.struct:'chuan');
   document.getElementById('cfg-p1').value=sub?sub.p1:40;
@@ -411,22 +630,30 @@ function goGrade(){
   document.getElementById('cfg-p3').value=sub?sub.p3:6;
   applyConfig();
   document.getElementById('exam').style.display='none';
+  document.getElementById('timer-bar').classList.add('hidden');
   document.getElementById('grade').style.display='block';
   document.getElementById('graded-view').classList.add('hidden');
   document.getElementById('scorenum').textContent='—';
   document.getElementById('scoredet').textContent='';
-}
-function backToExam(){
-  document.getElementById('exam').style.display='block';
-  document.getElementById('grade').style.display='none';
+  clearSession();
 }
 
+function backToExam(){
+  const sub=SUBJECTS.find(s=>s.id===selectedSubject);
+  document.getElementById('exam').style.display='block';
+  document.getElementById('grade').style.display='none';
+  document.getElementById('timer-bar').classList.remove('hidden');
+  startTimer(sub, getElapsedSeconds());
+}
+
+/* ======== CẤU TRÚC ĐIỂM ======== */
 function setStruct(s){
   currentStruct=s;
   ['chuan','phothong','linhhoat'].forEach(x=>document.getElementById('opt-'+x).classList.toggle('active',x===s));
   document.getElementById('flex-inputs').classList.toggle('show',s==='linhhoat');
 }
 
+/* ======== CONFIG ======== */
 function applyConfig(){
   const n1=Math.min(40,Math.max(0,parseInt(document.getElementById('cfg-p1').value)||0));
   const n2=Math.min(4,Math.max(0,parseInt(document.getElementById('cfg-p2').value)||0));
@@ -445,6 +672,7 @@ function applyConfig(){
   document.getElementById('scoredet').textContent='';
 }
 
+/* ======== CHẤM ĐIỂM ======== */
 function doGrade(){
   const n1=parseInt(document.getElementById('cfg-p1').value)||0;
   const n2=parseInt(document.getElementById('cfg-p2').value)||0;
@@ -456,10 +684,7 @@ function doGrade(){
   const tlnScore=currentStruct==='linhhoat'?flP3:(sub?sub.tlnScore:0.5);
   const perTN=currentStruct==='linhhoat'?flP1:0.25;
   let score=0,p1c=0,p1t=0,p2score=0,p3c=0;
-  for(let q=1;q<=n1;q++){
-    if(!key1[q])continue;p1t++;
-    if(ans1[q]===key1[q]){p1c++;score+=perTN;}
-  }
+  for(let q=1;q<=n1;q++){if(!key1[q])continue;p1t++;if(ans1[q]===key1[q]){p1c++;score+=perTN;}}
   for(let c=1;c<=n2;c++){
     let correct=0;
     ['a','b','c','d'].forEach(opt=>{if(key2[c]?.[opt]&&ans2[c]?.[opt]===key2[c][opt])correct++;});
@@ -477,34 +702,22 @@ function doGrade(){
   if(n3>0)detail+=`\nPhần III: ${p3c}/${n3} câu × ${tlnScore}đ = ${(p3c*tlnScore).toFixed(2)}đ`;
   document.getElementById('scorenum').textContent=score.toFixed(2);
   document.getElementById('scoredet').textContent=detail;
-  renderGradedView(n1,n2,n3,flP2);
+  renderGradedView(n1,n2,n3);
 }
 
-function renderGradedView(n1,n2,n3,flP2){
+function renderGradedView(n1,n2,n3){
   document.getElementById('gv-p1-wrap').classList.toggle('hidden',n1===0);
   buildP1(n1,'gv-p1grid',{});
-  // disable clicks on gv grids
-  setTimeout(()=>{
-    document.querySelectorAll('#gv-p1grid .bubble,#gv-p2grid .p2-bubble').forEach(b=>{b.onclick=null;b.style.cursor='default';});
-  },0);
+  setTimeout(()=>document.querySelectorAll('#gv-p1grid .bubble').forEach(b=>{b.onclick=null;b.style.cursor='default';}),0);
   for(let q=1;q<=n1;q++){
     if(!key1[q])continue;
     const st=ans1[q],cor=key1[q];
-    if(st){
-      const bSt=document.getElementById(`gv-p1grid-b${q}-${st}`);
-      if(bSt){bSt.classList.remove('sel');bSt.classList.add(st===cor?'b-correct':'b-wrong');}
-    }
-    if(st!==cor){
-      const bAns=document.getElementById(`gv-p1grid-b${q}-${cor}`);
-      if(bAns)bAns.classList.add('b-answer');
-    }
+    if(st){const b=document.getElementById(`gv-p1grid-b${q}-${st}`);if(b){b.classList.remove('sel');b.classList.add(st===cor?'b-correct':'b-wrong');}}
+    if(st!==cor){const b=document.getElementById(`gv-p1grid-b${q}-${cor}`);if(b)b.classList.add('b-answer');}
   }
-
   document.getElementById('gv-p2-wrap').classList.toggle('hidden',n2===0);
   buildP2(n2,'gv-p2grid',{});
-  setTimeout(()=>{
-    document.querySelectorAll('#gv-p2grid .p2-bubble').forEach(b=>{b.onclick=null;b.style.cursor='default';});
-  },0);
+  setTimeout(()=>document.querySelectorAll('#gv-p2grid .p2-bubble').forEach(b=>{b.onclick=null;b.style.cursor='default';}),0);
   for(let c=1;c<=n2;c++){
     ['a','b','c','d'].forEach(opt=>{
       const kv=key2[c]?.[opt],sv=ans2[c]?.[opt];
@@ -512,34 +725,22 @@ function renderGradedView(n1,n2,n3,flP2){
       const bD=document.getElementById(`gv-p2grid-p2c${c}${opt}D`);
       const bS=document.getElementById(`gv-p2grid-p2c${c}${opt}S`);
       if(!bD||!bS)return;
-      if(sv==='D')bD.classList.add('sd');
-      else if(sv==='S')bS.classList.add('ss');
-      if(sv===kv){
-        const chosen=sv==='D'?bD:bS;
-        chosen.classList.remove('sd','ss');chosen.classList.add('pb-correct');
-      } else {
-        if(sv){const chosen=sv==='D'?bD:bS;chosen.classList.remove('sd','ss');chosen.classList.add('pb-wrong');}
-        const ansEl=kv==='D'?bD:bS;ansEl.classList.add('pb-answer');
-      }
+      if(sv==='D')bD.classList.add('sd');else if(sv==='S')bS.classList.add('ss');
+      if(sv===kv){const ch=sv==='D'?bD:bS;ch.classList.remove('sd','ss');ch.classList.add('pb-correct');}
+      else{if(sv){const ch=sv==='D'?bD:bS;ch.classList.remove('sd','ss');ch.classList.add('pb-wrong');}
+        const ae=kv==='D'?bD:bS;ae.classList.add('pb-answer');}
     });
   }
-
   document.getElementById('gv-p3-wrap').classList.toggle('hidden',n3===0);
   buildP3(n3,'gv-p3grid',{});
   for(let c=1;c<=n3;c++){
-    const k=(key3[c]||'').trim();
-    const s=(ans3[c]||'').trim();
+    const k=(key3[c]||'').trim(),s=(ans3[c]||'').trim();
     const block=document.getElementById(`gv-p3grid-p3b${c}`);
     const inp=document.getElementById(`gv-p3grid-p3inp${c}`);
     if(inp){inp.value=s;inp.readOnly=true;}
     if(!k||!block)continue;
-    if(s.toLowerCase()===k.toLowerCase()){
-      block.classList.add('p3-correct');
-    } else {
-      block.classList.add('p3-wrong');
-      const show=document.createElement('div');show.className='p3-answer-show';show.textContent='✓ '+k;
-      block.appendChild(show);
-    }
+    if(s.toLowerCase()===k.toLowerCase()){block.classList.add('p3-correct');}
+    else{block.classList.add('p3-wrong');const show=document.createElement('div');show.className='p3-answer-show';show.textContent='✓ '+k;block.appendChild(show);}
   }
   document.getElementById('graded-view').classList.remove('hidden');
 }
